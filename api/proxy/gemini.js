@@ -34,10 +34,6 @@ module.exports = async (req, res) => {
       body: JSON.stringify(requestData)
     });
 
-    if (!externalApiResponse.ok) {
-      throw new Error('Failed to fetch data from external API');
-    }
-
     const responseData = await externalApiResponse.json();
 
     // Send back the response from the external API
