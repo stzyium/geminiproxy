@@ -1,12 +1,8 @@
 {
-  "functions": {
-    "api/proxy/gemini": "api/proxy/gemini.js"
-    "api/404": "api/404.js"
-  },
   "rewrites": [
     {
       "source": "/api/proxy/gemini",
-      "destination": "/api/gemini.js"
+      "destination": "/api/proxy/gemini.js"
     },
     {
       "source": "/api/(.*)",
