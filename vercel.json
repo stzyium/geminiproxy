@@ -1,6 +1,9 @@
 {
-  "routes": [
-    { "src": "/api/proxy/gemini", "dest": "/api/proxy/gemini.js" }
-  ],
+  "functions": {
+    "api/gemini.js": {
+      "handler": "api/gemini.js",
+      "methods": ["POST"]
+    }
+  },
   "regions": ["sin"]
 }
