@@ -1,6 +1,3 @@
-// api/gemini.js
-const fetch = require('node-fetch');
-
 module.exports = async (req, res) => {
   try {
     if (req.method === 'GET') {
@@ -8,7 +5,7 @@ module.exports = async (req, res) => {
       return res.status(405).json({ error: 'Method Not Allowed', message: 'This endpoint only accepts POST requests' });
     }
 
-    const apiKey = req.headers['x-api-key'];// Assuming the API key is sent in the 'x-api-key' header
+    const apiKey = req.headers['x-api-key']; // Assuming the API key is sent in the 'x-api-key' header
     const model = req.headers['x-model'];
     // Check if API key is provided 
     if (!apiKey) {
@@ -17,8 +14,18 @@ module.exports = async (req, res) => {
 
     const requestData = req.body; // Assuming data is sent in the request body
 
+    // Dynamically import node-fetch
+    let fetch;
+    try {
+      const fetchModule = await import('node-fetch');
+      fetch = fetchModule.default;
+    } catch (error) {
+      console.error('Error loading node-fetch:', error);
+      throw new Error('Failed to load node-fetch module');
+    }
+
     // Make request to external API with the provided key
-    const externalApiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/'+model+':generateContent?key=' + apiKey;
+    const externalApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
     const externalApiResponse = await fetch(externalApiUrl, {
       method: 'POST',
       headers: {
