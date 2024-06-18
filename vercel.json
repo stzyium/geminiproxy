@@ -1,4 +1,3 @@
-// vercel.json
 {
   "routes": [
     { "src": "/api/proxy/gemini", "dest": "/api/proxy/gemini.js" }
