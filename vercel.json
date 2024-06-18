@@ -3,7 +3,16 @@
     "api/gemini.js": {
       "handler": "api/gemini.js",
       "methods": ["POST"]
+    },
+    "api/404.js": {
+      "handler": "api/404.js"
     }
   },
-  "regions": ["sin"]
+  "regions": ["sin"],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api/404.js"
+    }
+  ]
 }
