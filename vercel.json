@@ -1,8 +1,6 @@
 {
   "functions": {
-    "api/proxy/gemini": {
-      "methods": ["POST"]
-    },
+    "api/proxy/gemini": "api/proxy/gemini.js"
     "api/404": "api/404.js"
   },
   "rewrites": [
