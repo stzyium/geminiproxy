@@ -1,17 +1,14 @@
 {
   "functions": {
     "api/proxy/gemini": {
-      "handler": "api/proxy/gemini.js",
       "methods": ["POST"]
     },
-    "api/404": {
-      "handler": "api/404.js"
-    }
+    "api/404": "api/404.js"
   },
   "rewrites": [
     {
       "source": "/api/proxy/gemini",
-      "destination": "/api/proxy/gemini.js"
+      "destination": "/api/gemini.js"
     },
     {
       "source": "/api/(.*)",
