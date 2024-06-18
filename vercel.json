@@ -2,5 +2,5 @@
   "routes": [
     { "src": "/api/proxy/gemini", "dest": "/api/proxy/gemini.js" }
   ],
-  "regions": ["sin", "hkg", "syd1"]
+  "regions": ["sin"]
 }
