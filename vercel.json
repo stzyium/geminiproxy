@@ -1,7 +1,7 @@
 {
   "functions": {
-    "api/gemini.js": {
-      "handler": "api/gemini.js",
+    "api/proxy/gemini.js": {
+      "handler": "api/proxy/gemini.js",
       "methods": ["POST"]
     },
     "api/404.js": {
