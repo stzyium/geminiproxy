@@ -1,11 +1,16 @@
-// api/proxy.js
+// api/gemini.js
 const fetch = require('node-fetch');
 
 module.exports = async (req, res) => {
   try {
-    const apiKey = req.headers['x-api-key']; // Assuming the API key is sent in the 'x-api-key' header
-    
-    // Check if API key is provided
+    if (req.method === 'GET') {
+      // If it's a GET request, respond with an error
+      return res.status(405).json({ error: 'Method Not Allowed', message: 'This endpoint only accepts POST requests' });
+    }
+
+    const apiKey = req.headers['x-api-key'];// Assuming the API key is sent in the 'x-api-key' header
+    const model = req.headers['x-model'];
+    // Check if API key is provided 
     if (!apiKey) {
       return res.status(400).json({ error: 'API key is missing' });
     }
@@ -13,7 +18,7 @@ module.exports = async (req, res) => {
     const requestData = req.body; // Assuming data is sent in the request body
 
     // Make request to external API with the provided key
-    const externalApiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key='+apikey;
+    const externalApiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/'+model+':generateContent?key=' + apiKey;
     const externalApiResponse = await fetch(externalApiUrl, {
       method: 'POST',
       headers: {
