@@ -18,7 +18,6 @@ module.exports = async (req, res) => {
       const fetchModule = await import('node-fetch');
       fetch = fetchModule.default;
     } catch (error) {
-      console.error('Error loading node-fetch:', error);
       throw new Error('Failed to load node-fetch module');
     }
 
