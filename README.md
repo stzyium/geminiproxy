@@ -1,1 +1,1 @@
-A script to use vercel servers as a proxy for api requests.
+A script to use vercel servers as a proxy for api requests
